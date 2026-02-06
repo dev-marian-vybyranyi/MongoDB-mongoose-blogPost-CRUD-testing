@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/users_test");
+mongoose.Promise = global.Promise;
 
-mongoose.connection
-  .once("open", () => {
-    console.log("Connected to MongoDB");
-  })
-  .on("error", (error) => {
-    console.log("Error connecting to MongoDB:", error);
-  });
+before((done) => {
+  mongoose.connect("mongodb://localhost/users_test");
+  mongoose.connection
+    .once("open", () => {
+      done();
+    })
+    .on("error", (error) => {
+      console.warn("Warning", error);
+    });
+});
 
 beforeEach((done) => {
   mongoose.connection.collections.users.drop(() => {
