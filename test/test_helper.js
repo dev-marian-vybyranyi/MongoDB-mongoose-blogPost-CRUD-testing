@@ -9,3 +9,9 @@ mongoose.connection
   .on("error", (error) => {
     console.log("Error connecting to MongoDB:", error);
   });
+
+beforeEach((done) => {
+  mongoose.connection.collections.users.drop(() => {
+    done();
+  });
+});
