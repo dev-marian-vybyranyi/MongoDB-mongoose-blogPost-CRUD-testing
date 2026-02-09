@@ -1,4 +1,4 @@
-# MongoDB Books
+# MongoDB
 
 This project demonstrates a MongoDB integration with Node.js using Mongoose. It includes data models for Users, BlogPosts, and Comments, showcasing how to handle associations, validations, and virtual types.
 
